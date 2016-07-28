@@ -21,6 +21,7 @@ import com.dianping.cat.Cat;
 import com.dianping.cat.message.Event;
 import com.dianping.cat.message.Transaction;
 import com.dianping.cat.message.internal.AbstractMessage;
+import com.dianping.cat.message.internal.NullMessage;
 
 /**
  * 消息树串联：dubbo-rpc服务调用
@@ -176,8 +177,10 @@ public class DubboCatCrossFilter implements Filter {
     }
     
     private void completeEvent(Event event){
-        AbstractMessage message = (AbstractMessage) event;
-        message.setCompleted(true);
+    	if (event != NullMessage.EVENT) {
+	        AbstractMessage message = (AbstractMessage) event;
+	        message.setCompleted(true);
+    	}
     }
 
 }
