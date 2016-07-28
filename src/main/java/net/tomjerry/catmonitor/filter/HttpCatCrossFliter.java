@@ -10,6 +10,9 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import net.tomjerry.catmonitor.common.CatConstants;
 import net.tomjerry.catmonitor.common.CatContext;
 
@@ -20,11 +23,13 @@ import com.dianping.cat.message.internal.AbstractMessage;
 
 /**
  * 服务提供侧串联消息树
- * @author kulijia
+ * @author madfrog
  * @date 2016-6-8 11:36:10
  */
 public class HttpCatCrossFliter implements Filter {
 
+	private static final Logger logger = LoggerFactory.getLogger(HttpCatCrossFliter.class);
+	
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain filterChain) throws IOException, ServletException {
 
@@ -43,7 +48,7 @@ public class HttpCatCrossFliter implements Filter {
 			filterChain.doFilter(req, resp);
 			t.setStatus(Transaction.SUCCESS);
 		} catch (Exception e) {
-	        e.printStackTrace();
+			logger.error("------ Get cat msgtree error : ", e);
 	        
 	        Event event = null;
 			event = Cat.newEvent("HTTP_REST_CAT_ERROR", requestURI);
@@ -68,7 +73,7 @@ public class HttpCatCrossFliter implements Filter {
 	/**
 	 * 串联provider端消息树
 	 * @param request
-	 * @param transaction
+	 * @param t
 	 */
 	private void createProviderCross(HttpServletRequest request, Transaction t){
         

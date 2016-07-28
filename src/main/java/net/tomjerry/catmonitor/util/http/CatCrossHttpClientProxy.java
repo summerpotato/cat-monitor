@@ -18,7 +18,7 @@ import com.dianping.cat.message.internal.AbstractMessage;
 /**
  * 支持CatCross监控的HttpClient类
  * 
- * @author joonk
+ * @author madfrog
  * @date 2016-6-8
  */
 @ThreadSafe
@@ -64,7 +64,7 @@ public class CatCrossHttpClientProxy extends HttpClientProxy {
             String ret = super.execute(request, socketTimeout, connectTimeout);
             t.setStatus(Transaction.SUCCESS);
             return ret;
-        } catch (Exception e) {
+        } catch (IOException e) {
         	
         	Event event = null;
 			event = Cat.newEvent("HTTP_REST_CAT_ERROR", request.getURI().getPath());

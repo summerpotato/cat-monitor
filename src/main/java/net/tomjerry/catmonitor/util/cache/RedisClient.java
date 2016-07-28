@@ -8,8 +8,8 @@ import redis.clients.jedis.ShardedJedis;
 import redis.clients.jedis.ShardedJedisPool;
 
 /**
- * redis-util
- * @author joonk
+ * redis工具类
+ * @author madfrog
  * @date 2016-6-16
  */
 public class RedisClient {

@@ -1,5 +1,8 @@
 package net.tomjerry.catmonitor.util.cache;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import redis.clients.jedis.Jedis;
 
 import com.dianping.cat.Cat;
@@ -10,10 +13,12 @@ import com.dianping.cat.message.Transaction;
  * 只对execute(JedisCallback<T> jedisCallback, String key)添加了监控
  * execute(SharedRedisCallback<T> redisCallback)需要自己添加cat监控
  * 
- * @author joonk
+ * @author madfrog
  */
 public class CatRedisClient extends RedisClient {
 
+	private Logger logger = LoggerFactory.getLogger(CatRedisClient.class);
+	
 	public static final String CACHE_REDIS_TYPE = "Cache.redis";
     public static final String REDIS_EVENT_TYPE = "Cache.redis.server";
     private static final String REDIS_SERVER_IP_PATTERN = "%s(%s)";
@@ -46,7 +51,11 @@ public class CatRedisClient extends RedisClient {
                 return ret;
             } catch (Exception e) {
                 t.setStatus(e.getClass().getSimpleName());
-                throw e;
+                //throw e;
+                
+                logger.error("--- redis cat error : ", e);
+                return null;
+                
             } finally {
                 t.complete();
             }

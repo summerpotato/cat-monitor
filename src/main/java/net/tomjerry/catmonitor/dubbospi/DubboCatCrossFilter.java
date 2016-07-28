@@ -24,7 +24,7 @@ import com.dianping.cat.message.internal.AbstractMessage;
 
 /**
  * 消息树串联：dubbo-rpc服务调用
- * @author kulijia
+ * @author madfrog
  *
  */
 @Activate(group = {Constants.PROVIDER, Constants.CONSUMER}, order = -9000)

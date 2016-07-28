@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 线程相关工具类
  * 
- * @author joonk
+ * @author madfrog
  */
 public class ThreadHelper {
 	

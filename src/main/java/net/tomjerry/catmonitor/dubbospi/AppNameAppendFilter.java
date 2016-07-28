@@ -11,7 +11,7 @@ import com.alibaba.dubbo.rpc.RpcException;
 
 /**
  * 获取application-name
- * @author kulijia
+ * @author madfrog
  */
 @Activate(group = {Constants.CONSUMER})
 public class AppNameAppendFilter implements Filter {

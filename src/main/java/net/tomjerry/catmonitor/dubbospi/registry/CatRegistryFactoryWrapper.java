@@ -11,8 +11,8 @@ import com.alibaba.dubbo.registry.Registry;
 import com.alibaba.dubbo.registry.RegistryFactory;
 
 /**
- * 
- * @author kulijia
+ * 获取应用名称
+ * @author madfrog
  */
 public class CatRegistryFactoryWrapper implements RegistryFactory {
 

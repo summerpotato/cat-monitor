@@ -27,7 +27,7 @@ import org.springframework.beans.factory.InitializingBean;
  * Http Client的包装类,基于4.4实现
  * 应根据具体应用个性化maxPerRoute, maxTotal, timeToLive参数
  * 
- * @author joonk
+ * @author madfrog
  */
 @ThreadSafe
 public class HttpClientProxy implements InitializingBean {
