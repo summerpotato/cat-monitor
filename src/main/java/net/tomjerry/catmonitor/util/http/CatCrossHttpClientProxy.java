@@ -18,7 +18,7 @@ import com.dianping.cat.message.internal.AbstractMessage;
 /**
  * 支持CatCross监控的HttpClient类
  * 
- * @author madfrog
+ * @author potato
  * @date 2016-6-8
  */
 @ThreadSafe

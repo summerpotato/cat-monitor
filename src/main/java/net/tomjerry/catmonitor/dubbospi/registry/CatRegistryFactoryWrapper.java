@@ -12,7 +12,7 @@ import com.alibaba.dubbo.registry.RegistryFactory;
 
 /**
  * 获取应用名称
- * @author madfrog
+ * @author potato
  */
 public class CatRegistryFactoryWrapper implements RegistryFactory {
 

@@ -23,7 +23,7 @@ import com.dianping.cat.message.internal.AbstractMessage;
 
 /**
  * 服务提供侧串联消息树
- * @author madfrog
+ * @author potato
  * @date 2016-6-8 11:36:10
  */
 public class HttpCatCrossFliter implements Filter {

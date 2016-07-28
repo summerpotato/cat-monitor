@@ -13,7 +13,7 @@ import com.dianping.cat.message.Transaction;
  * 只对execute(JedisCallback<T> jedisCallback, String key)添加了监控
  * execute(SharedRedisCallback<T> redisCallback)需要自己添加cat监控
  * 
- * @author madfrog
+ * @author potato
  */
 public class CatRedisClient extends RedisClient {
 

@@ -3,7 +3,7 @@ package net.tomjerry.catmonitor.datasource;
 /**
  * 在当前线程中保存数据源信息
  * 
- * @author madfrog
+ * @author potato
  */
 public class DataSourceHolder {
 

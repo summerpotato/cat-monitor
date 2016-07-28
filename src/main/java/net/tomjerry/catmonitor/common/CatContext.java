@@ -7,7 +7,7 @@ import com.dianping.cat.Cat;
 
 /**
  * 实现CAT上下文，以用来传递messageTreeId
- * @author madfrog
+ * @author potato
  * @date 2016-6-8
  */
 public class CatContext implements Cat.Context {

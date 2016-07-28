@@ -9,7 +9,7 @@ import redis.clients.jedis.ShardedJedisPool;
 
 /**
  * redis工具类
- * @author madfrog
+ * @author potato
  * @date 2016-6-16
  */
 public class RedisClient {

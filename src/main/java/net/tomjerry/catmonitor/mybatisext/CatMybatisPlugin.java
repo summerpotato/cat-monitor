@@ -32,7 +32,7 @@ import com.dianping.cat.message.Transaction;
  * 对MyBatis进行拦截，添加Cat监控
  * 目前仅支持RoutingDataSource和Druid组合配置的数据源
  * 
- * @author madfrog
+ * @author potato
  */
 
 @Intercepts({
