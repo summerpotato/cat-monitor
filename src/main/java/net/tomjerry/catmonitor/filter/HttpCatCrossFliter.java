@@ -20,6 +20,7 @@ import com.dianping.cat.Cat;
 import com.dianping.cat.message.Event;
 import com.dianping.cat.message.Transaction;
 import com.dianping.cat.message.internal.AbstractMessage;
+import com.dianping.cat.message.internal.NullMessage;
 
 /**
  * 服务提供侧串联消息树
@@ -88,8 +89,10 @@ public class HttpCatCrossFliter implements Filter {
     }
 
     private void completeEvent(Event event){
-    	AbstractMessage message = (AbstractMessage) event;
-    	message.setCompleted(true);
+    	if (event != NullMessage.EVENT) {
+    		AbstractMessage message = (AbstractMessage) event;
+    		message.setCompleted(true);
+    	}
     }
 
 }

@@ -14,6 +14,7 @@ import com.dianping.cat.Cat;
 import com.dianping.cat.message.Event;
 import com.dianping.cat.message.Transaction;
 import com.dianping.cat.message.internal.AbstractMessage;
+import com.dianping.cat.message.internal.NullMessage;
 
 /**
  * 支持CatCross监控的HttpClient类
@@ -96,8 +97,10 @@ public class CatCrossHttpClientProxy extends HttpClientProxy {
     }
 	
 	private void completeEvent(Event event){
-    	AbstractMessage message = (AbstractMessage) event;
-    	message.setCompleted(true);
+		if (event != NullMessage.EVENT) {
+			AbstractMessage message = (AbstractMessage) event;
+			message.setCompleted(true);
+		}
     }
 	
 }

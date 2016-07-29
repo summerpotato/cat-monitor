@@ -1,5 +1,10 @@
 package net.tomjerry.catmonitor.common;
 
+/**
+ * CAT相关关键字定义
+ * @author potato
+ * 
+ */
 public interface CatConstants {
 
 	public static final String CROSS_CONSUMER = "PigeonCall";
