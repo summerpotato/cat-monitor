@@ -1,2 +1,2 @@
-dubboCatFilter=net.tomjerry.catmonitor.dubbospi.DubboCatFilter
-appnameAppend=net.tomjerry.catmonitor.AppNameAppendFilter
+dubboCatCrossFilter=net.tomjerry.catmonitor.dubbospi.DubboCatCrossFilter
+appnameAppend=net.tomjerry.catmonitor.dubbospi.AppNameAppendFilter

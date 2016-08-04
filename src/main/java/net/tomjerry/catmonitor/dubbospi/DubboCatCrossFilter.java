@@ -41,7 +41,7 @@ public class DubboCatCrossFilter implements Filter {
         String loggerName = invoker.getInterface().getSimpleName() + "." + invocation.getMethodName();
         String type = CatConstants.CROSS_CONSUMER;
         if(Constants.PROVIDER_SIDE.equals(sideKey)){
-            type= CatConstants.CROSS_SERVER;
+            type = CatConstants.CROSS_SERVER;
         }
         Transaction t = Cat.newTransaction(type, loggerName);
         Result result = null;
@@ -111,7 +111,7 @@ public class DubboCatCrossFilter implements Filter {
 	
 	private Cat.Context getCatContext(){
         Cat.Context context = CAT_CONTEXT_LOCAL.get();
-        if(context==null){
+        if(context == null){
             context = initCatContext();
             CAT_CONTEXT_LOCAL.set(context);
         }
@@ -122,7 +122,7 @@ public class DubboCatCrossFilter implements Filter {
         Cat.Context context = new CatContext();
         Map<String,String> attachments = RpcContext.getContext().getAttachments();
         if(attachments != null && attachments.size() > 0){
-            for(Map.Entry<String,String> entry : attachments.entrySet()){
+            for(Map.Entry<String, String> entry : attachments.entrySet()){
                 if(Cat.Context.CHILD.equals(entry.getKey()) || Cat.Context.ROOT.equals(entry.getKey()) || Cat.Context.PARENT.equals(entry.getKey())){
                     context.addProperty(entry.getKey(), entry.getValue());
                 }
