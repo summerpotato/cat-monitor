@@ -31,6 +31,8 @@ public class HttpCatCrossFliter implements Filter {
 
 	private static final Logger logger = LoggerFactory.getLogger(HttpCatCrossFliter.class);
 	
+	private static final String DEFAULT_APPLICATION_NAME = "default";
+	
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain filterChain) throws IOException, ServletException {
 
@@ -38,6 +40,7 @@ public class HttpCatCrossFliter implements Filter {
 		String requestURI = request.getRequestURI();
 		
 		Transaction t = Cat.newTransaction(CatConstants.CROSS_SERVER, requestURI);
+		
 		try{
 			Cat.Context context = new CatContext();
 			context.addProperty(Cat.Context.ROOT, request.getHeader(Cat.Context.ROOT));

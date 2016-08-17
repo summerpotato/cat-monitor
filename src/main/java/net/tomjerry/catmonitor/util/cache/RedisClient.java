@@ -2,7 +2,6 @@ package net.tomjerry.catmonitor.util.cache;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.ShardedJedis;
 import redis.clients.jedis.ShardedJedisPool;
@@ -35,6 +34,29 @@ public class RedisClient {
             }
         }, key);
     }
+    
+    /**
+     * 支持value为byte[]
+     * @date 2016-8-15
+     */
+    public boolean setByte(final String key, final byte[] value){
+    	
+    	return this.execute(new JedisCallback<Boolean>() {
+            @Override
+            public Boolean doInJedis(Jedis jedis) {
+                String s = jedis.set(key.getBytes(), value);
+
+                return "OK".equals(s);
+            }
+
+            @Override
+            public String redisMethodName() {
+                return "set";
+            }
+        }, key);
+    	
+    }
+    
 
     /**
      * 使用默认超时时间
@@ -44,6 +66,10 @@ public class RedisClient {
      */
     public boolean setex(final String key, final String value) {
         return this.setex(key, value, this.redisTimeout);
+    }
+    
+    public boolean setex(final String key, final byte[] value) {
+        return this.setexByte(key, value, this.redisTimeout);
     }
 
     /**
@@ -67,12 +93,54 @@ public class RedisClient {
             }
         }, key);
     }
+    
+    /**
+     * 支持byte[]
+     * @param key
+     * @param value
+     * @param timeout
+     * @return
+     */
+    public boolean setexByte(final String key, final byte[] value, final int timeout) {
+        return this.execute(new JedisCallback<Boolean>() {
+            @Override
+            public Boolean doInJedis(Jedis jedis) {
+                String s = jedis.setex(key.getBytes(), timeout, value);
+                return "OK".equals(s);
+            }
+
+            @Override
+            public String redisMethodName() {
+                return "setex";
+            }
+        }, key);
+    }
 
     public String get(final String key) {
         return this.execute(new JedisCallback<String>() {
             @Override
             public String doInJedis(Jedis jedis) {
                 String value = jedis.get(key);
+                return value;
+            }
+
+            @Override
+            public String redisMethodName() {
+                return "get";
+            }
+        }, key);
+    }
+    
+    /**
+     * 支持key为byte[]
+     * @param key
+     * @return
+     */
+    public byte[] getByte(final String key) {
+        return this.execute(new JedisCallback<byte[]>() {
+            @Override
+            public byte[] doInJedis(Jedis jedis) {
+            	byte[] value = jedis.get(key.getBytes());
                 return value;
             }
 
