@@ -75,6 +75,7 @@ public class CatMybatisPlugin implements Interceptor {
             t.setStatus(Transaction.SUCCESS);
         } catch (Exception e) {
             Cat.logError(e);
+            throw e;
         } finally {
             t.complete();
         }
